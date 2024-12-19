@@ -1,13 +1,8 @@
-// Golovkin Maksim
+// Golovkin Maksim Task#1
 #pragma once
 
 #include <boost/mpi/collectives.hpp>
 #include <boost/mpi/communicator.hpp>
-#include <functional>
-#include <memory>
-#include <numeric>
-#include <string>
-#include <utility>
 #include <vector>
 
 #include "core/task/include/task.hpp"
@@ -18,11 +13,11 @@ class MPIIntegralCalculator : public ppc::core::Task {
  public:
   explicit MPIIntegralCalculator(std::shared_ptr<ppc::core::TaskData> inputData) : Task(std::move(inputData)) {};
 
-  bool validation() override;       // Проверка корректности входных данных
-  bool pre_processing() override;   // Предобработка данных
-  bool post_processing() override;  // Запуск интеграции с использованием MPI
-  bool run() override;              // Постобработка и сбор итогового значения
-  void set_function(const std::function<double(double)>& target_func);  // Задание функции для интеграции
+  bool validation() override;
+  bool pre_processing() override;
+  bool post_processing() override;
+  bool run() override;
+  void set_function(const std::function<double(double)>& target_func);
 
  private:
   boost::mpi::communicator world;
@@ -30,7 +25,7 @@ class MPIIntegralCalculator : public ppc::core::Task {
   double lower_bound{};
   double upper_bound{};
   int num_partitions{};
-  double global_result{};  // Итоговый результат, собираемый на главном процессе
+  double global_result{};
 
   double integrate(const std::function<double(double)>& f, double a, double b, int splits);
 };
