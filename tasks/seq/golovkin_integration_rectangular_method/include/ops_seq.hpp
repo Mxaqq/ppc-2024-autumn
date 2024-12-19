@@ -1,10 +1,9 @@
-// Golovkin Maksim Task#1
+// Golovkin Maksims
 
 #pragma once
 
 #include <memory>
 #include <vector>
-#include <chrono>
 
 #include "core/perf/include/perf.hpp"
 #include "core/task/include/task.hpp"
@@ -19,7 +18,6 @@ class IntegralCalculator : public ppc::core::Task {
   bool pre_processing() override;
   bool post_processing() override;
   bool run() override;
-  static double function_square(double x);
 
  private:
   std::shared_ptr<ppc::core::TaskData> taskData;
@@ -30,6 +28,7 @@ class IntegralCalculator : public ppc::core::Task {
   double h;
   double res;
   std::vector<double> input_;
+  double function_square(double x);
 };
 
 }  // namespace golovkin_integration_rectangular_method

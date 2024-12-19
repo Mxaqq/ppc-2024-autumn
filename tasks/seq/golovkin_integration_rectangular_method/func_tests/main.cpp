@@ -1,8 +1,7 @@
-// Golovkin Maksim Task#1
+// Golovkin Maksim
 
 #include <gtest/gtest.h>
 
-#include <memory>
 #include <vector>
 
 #include "core/task/include/task.hpp"
